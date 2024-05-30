@@ -9,7 +9,6 @@ public class Main {
         matrizObjetos[0][2] = 3.14;    // Double
         matrizObjetos[1][0] = true;    // Boolean
         matrizObjetos[1][1] = 'a';     // Char
-        matrizObjetos[1][2] = new MiObjeto(); // Objeto personalizado
         
         // Imprimimos los valores de la matriz
         for (Object[] fila : matrizObjetos) {
@@ -18,20 +17,24 @@ public class Main {
             }
             System.out.println();
         }
+
+        // Llamada al método de búsqueda en ObjectController
+        Station[] estaciones = new Station[3];
+        estaciones[0] = new Station("Estación A");
+        estaciones[1] = new Station("Estación B");
+        estaciones[2] = new Station("Estación C");
+
+        String nombreBuscado = "Estación B";
+        Station resultado = (Station) objecController.buscarPorAtributo(estaciones, "nombre", nombreBuscado);
+
+        if (resultado != null) {
+            System.out.println("Estación encontrada: " + resultado.getNombre());
+        } else {
+            System.out.println("Estación no encontrada.");
+        }
+
+        // Llamada al método de visualización en ObjectView
+        Station estacionA = new Station("Estación A");
+        ObjectView.mostrarInformacion(estacionA);
     }
 }
-
-// Clase de ejemplo para un objeto personalizado
-class MiObjeto {
-    private int valor;
-
-    public MiObjeto() {
-        this.valor = 10;
-    }
-
-    @Override
-    public String toString() {
-        return "MiObjeto con valor: " + valor;
-    }
-}
-
