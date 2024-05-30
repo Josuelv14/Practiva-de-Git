@@ -1,7 +1,4 @@
 package Model;
-
-
-
 public class Zapato {
     private int talla;
     private String color;
